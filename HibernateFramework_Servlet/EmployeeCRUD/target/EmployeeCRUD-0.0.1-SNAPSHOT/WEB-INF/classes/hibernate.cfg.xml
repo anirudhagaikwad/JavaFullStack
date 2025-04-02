@@ -4,22 +4,39 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Database connection settings -->
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/employee_db</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">123</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property> <!-- PostgreSQL JDBC driver -->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/employee_db</property> <!-- Database URL -->
+        <property name="hibernate.connection.username">postgres</property> <!-- Database username -->
+        <property name="hibernate.connection.password">123</property> <!-- Database password -->
 
         <!-- Hibernate dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- SQL dialect for PostgreSQL -->
 
-        <!-- Automatically create/update the schema -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
-		<property name="hibernate.show_sql">true</property>
-        <!-- Enable transaction management -->
-        <property name="hibernate.current_session_context_class">thread</property>
-		<property name="hibernate.connection.autocommit">true</property>
-        <!-- Mapping to entity class -->
-        <mapping class="model.Employee"/>
+        <!-- Schema management -->
+        <property name="hibernate.hbm2ddl.auto">update</property> 
+        <!-- Possible values:
+             - `create`: Creates the schema, destroying previous data.
+             - `update`: Updates the schema without dropping data.
+             - `validate`: Validates the schema but does not modify it.
+             - `none`: No automatic schema management.
+        -->
+
+        <!-- Enable SQL query logging -->
+        <property name="hibernate.show_sql">true</property> <!-- Prints generated SQL queries in the console -->
+
+        <!-- Transaction management -->
+        <property name="hibernate.current_session_context_class">thread</property> 
+        <!-- `thread`: Each thread gets its own Hibernate session. Useful for multi-threaded apps. -->
+
+        <property name="hibernate.connection.autocommit">true</property> 
+        <!-- Enables auto-commit mode for transactions. 
+             Setting `true` can lead to performance issues in some cases. 
+             Consider using explicit transaction management.
+        -->
+
+        <!-- Mapping entity classes -->
+        <mapping class="model.Employee"/> <!-- Maps the Employee entity to the database table -->
+
     </session-factory>
 </hibernate-configuration>
 
