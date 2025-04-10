@@ -1,0 +1,42 @@
+<mat-card class="book-form-card animate__fadeIn">
+    <mat-card-header>
+      <mat-card-title>{{ isEdit ? 'Edit Book' : 'Add Book' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" required>
+          <mat-error *ngIf="bookForm.get('title')?.hasError('required')">Title is required</mat-error>
+          <mat-error *ngIf="bookForm.get('title')?.hasError('minlength')">Minimum 2 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>ISBN</mat-label>
+          <input matInput formControlName="isbn" required>
+          <mat-error *ngIf="bookForm.get('isbn')?.hasError('required')">ISBN is required</mat-error>
+          <mat-error *ngIf="bookForm.get('isbn')?.hasError('pattern')">Invalid ISBN format</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Author</mat-label>
+          <input matInput formControlName="author" required>
+          <mat-error *ngIf="bookForm.get('author')?.hasError('required')">Author is required</mat-error>
+          <mat-error *ngIf="bookForm.get('author')?.hasError('minlength')">Minimum 2 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Publication Date</mat-label>
+          <input matInput type="date" formControlName="publicationDate" required>
+          <mat-error *ngIf="bookForm.get('publicationDate')?.hasError('required')">Date is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="number" formControlName="quantity" required>
+          <mat-error *ngIf="bookForm.get('quantity')?.hasError('required')">Quantity is required</mat-error>
+          <mat-error *ngIf="bookForm.get('quantity')?.hasError('min')">Must be 0 or greater</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid">
+          {{ isEdit ? 'Update' : 'Create' }}
+        </button>
+        <button mat-button routerLink="/books">Cancel</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

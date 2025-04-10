@@ -1,0 +1,26 @@
+<table mat-table [dataSource]="borrowings" class="mat-elevation-z8 animate__fadeIn">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Book Title</th>
+      <td mat-cell *matCellDef="let borrowing">{{ borrowing.book.title }}</td>
+    </ng-container>
+    <ng-container matColumnDef="borrowDate">
+      <th mat-header-cell *matHeaderCellDef>Borrow Date</th>
+      <td mat-cell *matCellDef="let borrowing">{{ borrowing.borrowDate | date }}</td>
+    </ng-container>
+    <ng-container matColumnDef="dueDate">
+      <th mat-header-cell *matHeaderCellDef>Due Date</th>
+      <td mat-cell *matCellDef="let borrowing">{{ borrowing.dueDate | date }}</td>
+    </ng-container>
+    <ng-container matColumnDef="fineAmount">
+      <th mat-header-cell *matHeaderCellDef>Fine Amount</th>
+      <td mat-cell *matCellDef="let borrowing">{{ borrowing.fineAmount | currency }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let borrowing">
+        <button mat-button color="primary" *ngIf="!borrowing.returned" (click)="returnBook(borrowing.id!)">Return</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

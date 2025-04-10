@@ -1,0 +1,15 @@
+@use 'animate.css/animate.min.css';
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.animate__fadeIn {
+  animation: fadeIn 0.5s ease-in;
+}
+
+html, body {
+  height: 100%;
+}

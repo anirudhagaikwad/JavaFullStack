@@ -1,0 +1,108 @@
+ Backend is a Spring Boot application with JWT authentication 
+ "LibraryManagement"
+
+---
+
+### Prerequisites
+- Node.js: Version 22.x or later (Angular 19 requires it).
+- Angular CLI: Install globally with `npm install -g @angular/cli@19`.
+- Spring Boot Backend: Running on `http://localhost:8080` with endpoints like `/api/auth/register`, `/api/books`, etc., as defined earlier.
+
+---
+### Project Structure
+Here’s the planned structure:
+
+src/
+├── app/
+│   ├── components/
+│   │   ├── login/
+│   │   ├── register/
+│   │   ├── book-list/
+│   │   ├── book-form/
+│   │   └── nav-bar/
+│   ├── services/
+│   │   ├── auth.service.ts
+│   │   └── book.service.ts
+│   ├── models/
+│   │   ├── user.ts
+│   │   └── book.ts
+│   ├── app.component.html
+│   ├── app.component.scss
+│   ├── app.component.ts
+│   ├── app.routes.ts
+│   └── app.config.ts
+├── environments/
+│   ├── environment.ts
+│   └── environment.prod.ts
+└── styles.scss
+
+
+### Step 1: Create a New Angular 19 Project
+1. Open a terminal and run:
+   
+   "ng new library-management --standalone --skip-tests --routing --style=scss"
+   
+   - `--standalone`: Uses Angular’s standalone components (new default in Angular 19).
+   - `--skip-tests`: Skips test files for simplicity.
+   - `--routing`: Adds routing.
+   - `--style=scss`: Uses SCSS for styling.
+
+### Step 2: Navigate to the project directory:
+   
+   "cd library-management"
+   
+
+### Step 3: Install Angular Material for an attractive UI:
+   
+   "ng add @angular/material"
+   
+   - Choose a theme (e.g., `Indigo/Pink`) and enable typography and animations when prompted.
+
+
+### Step 4: Install @angular/animations
+
+    "npm install @angular/animations"
+
+
+### Step 5: Run the Application
+1. Start your Spring Boot backend (`mvn spring-boot:run` in the backend directory).
+2. Run the Angular app:
+   
+   "ng serve"
+   
+3. Open `http://localhost:4200` in your browser.
+
+---
+
+### Features of the Angular 19 App
+- Attractive UI: Uses Angular Material for a modern, responsive design with cards, tables, and a toolbar.
+- JWT Integration: Stores the token in `localStorage` and includes it in API requests via `HttpHeaders`.
+- Standalone Components: Leverages Angular 19’s standalone feature for cleaner, modular code.
+- Routing: Simple navigation between login and book list pages.
+
+---
+
+Steps to Resolve
+1. Update styles.scss
+Replace your src/styles.scss with the code above.
+2. Clean the Build Cache
+Angular CLI doesn’t have a direct cache-clear command like --force, but you can ensure a fresh build by:
+Deleting the dist folder (if it exists):
+bash
+
+Collapse
+
+Wrap
+
+Copy
+rm -rf dist
+Or, if you suspect a deeper cache issue, reinstall dependencies:
+bash
+
+Collapse
+
+Wrap
+
+Copy
+rm -rf node_modules package-lock.json
+npm install
