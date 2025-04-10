@@ -17,9 +17,9 @@ Welcome to the **Full-Stack Java Tutorial** repository! This repository contains
 | 3  | PostgreSQL practice Examples  | [View](https://github.com/anirudhagaikwad/PostgreSQL.git)                                  |                                                                           |
 | 4  | Advanced Java Practicals      | [View](https://github.com/anirudhagaikwad/Servlet_SpringBoot)                                                                                  |
 | 5  | Hibernate Framework           | [View](https://github.com/anirudhagaikwad/JavaFullStack/tree/main/HibernateFramework_Servlet)                                                                                  |
-| 6  | Spring Boot Framework         | [View](#)                                                                                  |
+| 6  | Spring Boot Framework         | [View](https://github.com/anirudhagaikwad/JavaFullStack/tree/main/SpringBoot_RestAPI)                                                                                  |
 | 7  | Frontend - HTML, CSS, JS ,Typescript      | [View](https://github.com/anirudhagaikwad/JavaFullStack/tree/main/Frontend)                                                                                |
-| 8  | Angular Framework             | [View](https://github.com/anirudhagaikwad/JavaFullStack/tree/main/Frontend/Angular)                                                                                 |
+| 8  | Angular Framework             | [View](https://github.com/anirudhagaikwad/JavaFullStack/tree/main/Angular19)                                                                                 |
 
 ## 🚀 How to Use
 1. Clone the repository:
