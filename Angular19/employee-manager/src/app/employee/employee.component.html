@@ -1,0 +1,16 @@
+<h1>Employee Manager (Angular 19 + Signals)</h1>
+
+<form (submit)="addOrUpdateEmployee()">
+  <input [(ngModel)]="name" name="name" placeholder="Name" required />
+  <input [(ngModel)]="role" name="role" placeholder="Role" required />
+  <button type="submit">{{ editing ? 'Update' : 'Add' }}</button>
+  <button type="button" *ngIf="editing" (click)="cancelEdit()">Cancel</button>
+</form>
+
+<ul>
+  <li *ngFor="let emp of employees()">
+    {{ emp.name }} ({{ emp.role }})
+    <button (click)="editEmployee(emp)">Edit</button>
+    <button (click)="deleteEmployee(emp.id)">Delete</button>
+  </li>
+</ul>
