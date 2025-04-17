@@ -1,0 +1,19 @@
+<div class="container mt-4" *ngIf="employee">
+    <h2>Employee Details</h2>
+    <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+      <div class="card-body">
+        <h5 class="card-title">{{ employee.firstName }} {{ employee.lastName }}</h5>
+        <p class="card-text"><strong>Email:</strong> {{ employee.email }}</p>
+        <p class="card-text"><strong>Phone:</strong> {{ employee.phoneNumber || 'N/A' }}</p>
+        <p class="card-text"><strong>Hire Date:</strong> {{ employee.hireDate }}</p>
+        <p class="card-text"><strong>Salary:</strong> ₹{{ employee.salary || '0' }}</p>
+        <a class="btn btn-secondary mt-3" routerLink="/employees">Back to List</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mt-4" *ngIf="!employee">
+    <div class="alert alert-warning">Employee not found!</div>
+    <a routerLink="/employees" class="btn btn-secondary">Back</a>
+  </div>
+  

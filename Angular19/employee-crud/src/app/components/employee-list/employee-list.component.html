@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2>Employee List</h2>
+    <a class="btn btn-success mb-3" routerLink="/employees/add">Add Employee</a>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Hire Date</th><th>Salary</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employees">
+          <td>{{ emp.empId }}</td>
+          <td>{{ emp.firstName }} {{ emp.lastName }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.phoneNumber }}</td>
+          <td>{{ emp.hireDate }}</td>
+          <td>{{ emp.salary }}</td>
+          <td>
+            <button class="btn btn-info btn-sm me-2" [routerLink]="['/employees', emp.empId]">View</button>
+            <button class="btn btn-warning btn-sm me-2" [routerLink]="['/employees/edit', emp.empId]">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp.empId!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
