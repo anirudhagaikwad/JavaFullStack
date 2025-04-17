@@ -64,24 +64,47 @@ The **Angular CLI** is the fastest and easiest way to develop Angular applicatio
 Pipes are used to **transform data in templates**. They are simple functions that accept an input and return a transformed output, used via the pipe `|` symbol.
 
 ### 🔧 Built-in Pipes:
-| Pipe | Usage | Description |
-|------|-------|-------------|
-| `date` | `{{ today | date:'short' }}` | Formats a date value |
-| `uppercase` | `{{ name | uppercase }}` | Converts text to uppercase |
-| `lowercase` | `{{ name | lowercase }}` | Converts text to lowercase |
-| `currency` | `{{ amount | currency:'INR' }}` | Formats a number as currency |
-| `percent` | `{{ value | percent }}` | Formats a number as percentage |
-| `json` | `{{ object | json }}` | Converts object to JSON string |
-| `slice` | `{{ items | slice:1:4 }}` | Returns selected items from list |
-| `async` | `{{ observableData | async }}` | Subscribes and returns the latest value from an Observable or Promise |
 
-### 🛠️ Custom Pipes:
+| Pipe        | Example Usage                         | Description                            |
+|-------------|----------------------------------------|----------------------------------------|
+| `date`      | `` {{ today \| date:'short' }} ``      | Formats a date value                   |
+| `uppercase` | `` {{ name \| uppercase }} ``          | Converts text to uppercase             |
+| `lowercase` | `` {{ name \| lowercase }} ``          | Converts text to lowercase             |
+| `currency`  | `` {{ amount \| currency:'INR' }} ``   | Formats a number as currency           |
+| `percent`   | `` {{ value \| percent }} ``           | Formats a number as a percentage       |
+| `json`      | `` {{ object \| json }} ``             | Converts object to JSON string         |
+| `slice`     | `` {{ items \| slice:1:4 }} ``         | Returns selected items from list       |
+| `async`     | `` {{ observableData \| async }} ``    | Subscribes and outputs Observable value|
+
+---
+
+### 🛠️ Custom Pipes
+
 You can create custom pipes using the Angular CLI:
 
 ```bash
 ng generate pipe customPipeName
 
 ```
+example
+```
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'reverse' })
+export class ReversePipe implements PipeTransform {
+  transform(value: string): string {
+    return value.split('').reverse().join('');
+  }
+}
+
+```
+use in html
+
+```
+{{ 'Angular' | reverse }} <!-- Output: ralugnA -->
+
+```
+Pipes are ideal for transforming data in the view without altering the component logic.
 ---
 
 ## 🧭 7. Routing
