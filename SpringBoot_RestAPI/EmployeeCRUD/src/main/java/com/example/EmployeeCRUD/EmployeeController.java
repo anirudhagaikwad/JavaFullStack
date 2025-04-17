@@ -135,4 +135,41 @@ The `EmployeeController` class is a Spring MVC controller responsible for handli
 
 This approach ensures that the web layer (controller) is clean and focused on handling user interactions, while the service layer deals with business logic and data manipulation. 
  
+The EmployeeController class defines a REST API with the following endpoints under the base path /employees:
+
+POST /employees/register
+Purpose: Registers a new employee.
+Method: POST
+Input: Employee object in the request body.
+Output: ResponseEntity<Employee> with the saved employee.
+
+GET /employees/all
+Purpose: Retrieves a list of all employees.
+Method: GET
+Output: ResponseEntity<List<Employee>> with the list of employees.
+
+GET /employees/{id}
+Purpose: Retrieves an employee by their ID.
+Method: GET
+Input: id as a path variable.
+Output: ResponseEntity<Employee> with the employee or 404 if not found.
+
+GET /employees/email/{email}
+Purpose: Retrieves an employee by their email.
+Method: GET
+Input: email as a path variable.
+Output: ResponseEntity<Employee> with the employee or 404 if not found.
+
+PUT /employees/update/{id}
+Purpose: Updates an existing employee.
+Method: PUT
+Input: id as a path variable, Employee object in the request body.
+Output: ResponseEntity<Employee> with the updated employee.
+
+DELETE /employees/delete/{id}
+Purpose: Deletes an employee by their ID.
+Method: DELETE
+Input: id as a path variable.
+Output: ResponseEntity<Void> with no content (204 status).
+Total Endpoints: 6
 */

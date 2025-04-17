@@ -36,3 +36,8 @@ This will generate a corresponding `fileName.js` file in the same directory.
 
 ---
 
+## ⚙️ Interprets JavaScript File
+
+```bash
+node fileName.js
+```
