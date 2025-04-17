@@ -1,242 +1,232 @@
-## 🌟 Angular 19 Notes
+# 🌟 Angular 19 Notes
 
-### 📌 1. Introduction to Angular
-- Angular is a TypeScript-based open-source web application framework.
-- Developed by Google.
-- Used for building single-page applications (SPAs).
-
----
-
-### 🏗️ 2. Angular Architecture
-- Modules: Group components, directives, pipes, and services.
-- Components: Core building blocks controlling parts of the UI.
-- Templates: HTML + Angular syntax (interpolation, directives).
-- Services: Logic that can be shared across components.
-- Dependency Injection: Inject services into components or other services.
-- Routing: Navigates between components/pages.
+## 📌 1. Introduction to Angular
+Angular is a **TypeScript-based open-source web application framework** developed by **Google**, used for building **single-page applications (SPAs)**.  
+It provides:
+- A component-based framework for building scalable web applications.
+- A collection of well-integrated libraries (routing, forms, client-server communication, etc.).
+- Developer tools for development, build, testing, and updates.
 
 ---
 
-### ⚙️ 3. Angular CLI
-- Command-line interface to create and manage Angular apps.
-- Key commands:
-  - `ng new` – Create a new project
-  - `ng serve` – Start development server
-  - `ng generate component/service/module` – Create resources
-  - `ng build` – Compile for production
+## 🏗️ 2. Angular Architecture
+- **Modules**: Group components, directives, pipes, and services.
+- **Components**: Core building blocks controlling parts of the UI.
+- **Templates**: HTML + Angular syntax (interpolation, directives).
+- **Services**: Business logic that can be shared across components.
+- **Dependency Injection**: Inject services into components or other services.
+- **Routing**: Navigates between components/pages.
 
 ---
 
-### 🧱 4. Components
-- Components are the building blocks of the UI.
-- Decorated with `@Component` decorator.
-- Each component includes:
-  - Selector: The custom HTML tag name used to place the component.
-  - Template: The HTML layout or structure.
-  - Style: CSS or SCSS styles applied to the component.
-  - Class: TypeScript class that defines logic, data, and behavior.
-- Components make up views and are used inside templates.
+## ⚙️ 3. Angular CLI
+The **Angular CLI** is the fastest and easiest way to develop Angular applications.
+
+### Common Commands:
+| Command | Description |
+|--------|-------------|
+| `ng new <project-name>` | Create a new Angular project |
+| `ng serve` | Start development server with hot reload |
+| `ng generate <type> <name>` | Generate a component/service/module |
+| `ng build` | Compile the application for production |
+| `ng test` | Run unit tests |
+| `ng e2e` | Run end-to-end tests |
 
 ---
 
-### 🔁 5. Data Binding (4 Types)
-- Binding connects component logic with templates (UI).
-1. Interpolation – `{{ expression }}` (Displays dynamic data)
-2. Property Binding – `[property]="expression"` (Sets element properties)
-3. Event Binding – `(event)="handlerFunction()"` (Responds to events like click)
-4. Two-way Binding – `[(ngModel)]="property"` (Syncs data both ways; needs `FormsModule`)
+## 🧱 4. Components
+- Defined using the `@Component` decorator.
+- Composed of:
+  - **Selector**: Custom HTML tag name.
+  - **Template**: HTML layout.
+  - **Style**: CSS or SCSS styles.
+  - **Class**: TypeScript logic and data handling.
+- A component = `.ts` + `.html` + `.css`
 
 ---
 
-### 🎯 6. Directives
-- Directives are instructions in templates to manipulate DOM or behavior.
-- Structural Directives:
-  - Change layout by adding/removing elements.
-  - Examples: `*ngIf` (condition), `*ngFor` (loop)
-- Attribute Directives:
-  - Change appearance or behavior of an element.
-  - Examples: `[ngClass]`, `[ngStyle]`
-  - You can also create custom attribute directives.
+## 🔁 5. Data Binding (4 Types)
+1. **Interpolation** – `{{ expression }}`: Display dynamic data.
+2. **Property Binding** – `[property]="expression"`: Set HTML element properties.
+3. **Event Binding** – `(event)="handler()"`: Respond to user actions.
+4. **Two-way Binding** – `[(ngModel)]="property"`: Sync between UI and component (requires `FormsModule`).
 
 ---
 
-### 🧭 7. Routing
-- Routing helps navigate between views/components.
+## 🎯 6. Directives
+- **Structural Directives**: Modify layout.
+  - `*ngIf`, `*ngFor`
+- **Attribute Directives**: Modify appearance or behavior.
+  - `[ngClass]`, `[ngStyle]`
+- You can create **custom directives**.
+
+## 🔣 6.1 Pipes
+Pipes are used to **transform data in templates**. They are simple functions that accept an input and return a transformed output, used via the pipe `|` symbol.
+
+### 🔧 Built-in Pipes:
+| Pipe | Usage | Description |
+|------|-------|-------------|
+| `date` | `{{ today | date:'short' }}` | Formats a date value |
+| `uppercase` | `{{ name | uppercase }}` | Converts text to uppercase |
+| `lowercase` | `{{ name | lowercase }}` | Converts text to lowercase |
+| `currency` | `{{ amount | currency:'INR' }}` | Formats a number as currency |
+| `percent` | `{{ value | percent }}` | Formats a number as percentage |
+| `json` | `{{ object | json }}` | Converts object to JSON string |
+| `slice` | `{{ items | slice:1:4 }}` | Returns selected items from list |
+| `async` | `{{ observableData | async }}` | Subscribes and returns the latest value from an Observable or Promise |
+
+### 🛠️ Custom Pipes:
+You can create custom pipes using the Angular CLI:
+
+```bash
+ng generate pipe customPipeName
+
+---
+
+## 🧭 7. Routing
+- Manages navigation between views.
 - Defined in `app-routing.module.ts` using `RouterModule`.
-- Each route has a `path` and a `component`.
+- Route config: `{ path: 'home', component: HomeComponent }`
 - Supports:
-  - Route parameters (dynamic values)
-  - Route guards (protect routes)
-  - Lazy loading (load modules on demand for better performance)
+  - **Route Parameters**
+  - **Guards** (e.g., `CanActivate`)
+  - **Lazy Loading**
 
 ---
 
-### 🗃️ 8. Modules
-- Modules group related parts of the app (components, services, etc.).
-- The main module is `AppModule` (root module).
-- Feature modules organize big apps into smaller sections.
-- Defined using `@NgModule` decorator.
+## 🗃️ 8. Modules
+- Organize app into cohesive blocks.
+- Defined using `@NgModule`.
+- **AppModule** is the root module.
+- Use **Feature Modules** for large apps.
 
 ---
 
-### 📦 9. Services and Dependency Injection
-- Services are used to write business logic, reusable code, or data access.
-- Created using Angular CLI: `ng generate service service-name`
-- Injected into components via constructor using Angular’s Dependency Injection system.
-- Promotes code reuse and separation of concerns.
+## 📦 9. Services & Dependency Injection
+- Create services using `ng generate service <name>`.
+- Share logic and data between components.
+- Inject using constructor via Angular’s **DI system**.
 
 ---
 
-### 🌐 10. HTTP Client
-- Used to make HTTP requests to a backend (like REST APIs).
-- Angular provides `HttpClientModule`.
-- Use `HttpClient` to make requests (GET, POST, PUT, DELETE).
-- Works with Observables (asynchronous operations).
+## 🌐 10. HTTP Client
+- Import `HttpClientModule` to use Angular's `HttpClient`.
+- Supports `GET`, `POST`, `PUT`, `DELETE`.
+- Uses **RxJS Observables** for async handling.
 
 ---
 
-### ✅ 11. Forms
-- Used to get user input.
-- Two types:
-  - Template-driven Forms: Simple forms using `[(ngModel)]`.
-  - Reactive Forms: More complex and powerful using `FormGroup`, `FormControl`, and `FormBuilder`.
+## ✅ 11. Forms
+- **Template-driven Forms**: Simple, use `[(ngModel)]`.
+- **Reactive Forms**: Complex, scalable forms using `FormGroup`, `FormControl`, `FormBuilder`.
 
 ---
 
-### 🧪 12. Testing
-- Angular supports unit testing and end-to-end testing.
+## 🧪 12. Testing
+- Angular supports **unit** and **end-to-end** testing.
 - Tools:
-  - Jasmine: Testing framework.
-  - Karma: Test runner.
-- You can test components, services, pipes, and directives.
+  - **Jasmine**: Test framework.
+  - **Karma**: Test runner.
 
 ---
 
-### 🧰 13. Build and Deployment
-- Use `ng build --prod` to create optimized files for production.
-- Files are stored in the `dist/` folder.
-- Can be deployed to platforms like Firebase, Netlify, or GitHub Pages.
+## 🧰 13. Build & Deployment
+- Build app with:
+  ```bash
+  ng build --prod
+  ```
+- Output is placed in the `dist/` folder.
+- Can be deployed to:
+  - Firebase
+  - Netlify
+  - GitHub Pages
 
 ---
 
-### 🔄 14. Lifecycle Hooks
-- Lifecycle hooks are methods that run at different stages of a component's life.
-- Examples:
-  - `ngOnInit()` – Runs after component is initialized.
-  - `ngOnChanges()` – Called when input properties change.
-  - `ngOnDestroy()` – Called just before Angular destroys the component.
-- Used for setup, cleanup, reacting to changes, etc.
+## 🔄 14. Lifecycle Hooks
+Angular provides lifecycle methods in components:
+- `ngOnInit()` – On component init.
+- `ngOnChanges()` – On input data change.
+- `ngOnDestroy()` – Before component removal.
 
 ---
 
-### 🆕 15. What’s New in Angular 19
-- Signals – A new way to track and react to reactive values.
-- Improved SSR Hydration – Better server-side rendering and rehydration.
-- Vite Support – Fast dev server and build system.
-- Build Performance – Improved speed and memory efficiency.
-- Angular CLI Improvements – Faster and smarter commands.
-- RxJS Compatibility – Updated for modern RxJS features.
+## 🆕 15. What’s New in Angular 19
+- **Signals**: Fine-grained reactive state tracking.
+- **Improved SSR Hydration**: Enhanced server-side rendering.
+- **Vite Support**: Super-fast dev/build setup.
+- **Better Build Performance**
+- **Angular CLI Improvements**
+- **Updated RxJS Compatibility**
 
 ---
 
-### 🎯prerequisite Angular19 : 
-    Downloads Node.js v22.14.0
-    Text editor - recommend Visual Studio Code
-    Terminal - Required for running Angular CLI commands
-    Development Tool - To improve your development workflow, recommend the Angular Language Service
-    https://code.visualstudio.com/
-
-### 🎯Install Angular CLI
-    npm install -g @angular/cli  
-
-### 🎯Check Angular Version
-    ng version
-
-### 🎯Install Angular Material 
-    ng add @angular/material
+## ⚙️ Prerequisites
+- **Node.js**: v22.14.0
+- **Editor**: Visual Studio Code (recommended)
+- **Terminal**: For Angular CLI commands
+- **Dev Tool**: Angular Language Service  
+  [Download VS Code](https://code.visualstudio.com/)
 
 ---
 
-### 🎯What is Angular?
+## 🛠️ Setup Guide
 
-Angular is a framework and development platform, built on TypeScript. It is used for creating single-page web applications. As a platform, Angular includes:
-    A component-based framework for building scalable web applications
-    A collection of well-integrated libraries that cover a wide variety of features, including routing, forms management, client-server communication, and more
-    A suite of developer tools to help you develop, build, test, and update your code
+### 1. Install Angular CLI
+```bash
+npm install -g @angular/cli
+```
 
+### 2. Check Angular Version
+```bash
+ng version
+```
 
-### 🎯The Angular CLI is the fastest, easiest, and recommended way to develop Angular applications. 
-The Angular CLI makes a number of tasks easy. Here are some example commands that you'll use frequently:
-
-Command 	Description
----------------------------------------------------------------
-ng build 	Compiles an Angular app into an output directory.
-ng serve 	Builds and serves your application, rebuilding on file changes.
-ng generate Generates or modifies files based on a schematic.
-ng test 	Runs unit tests on a given project.
-ng e2e  	Builds and serves an Angular application, then runs end-to-end tests.
-
-Create a new project
-    ng new <project-name>
-
-
-### 🎯Understanding Angular directory structure
-The angular project contains so many pre defined directories and files.
-Angular Directory Structure
-
- APP 
-     ngApp 
-         .angular 
-         .vscode 
-         node_modules 
-         src
-         .editorconfig
-         .gitignore
-        {} angular.json
-        {} package-lock.json
-        {} package.json
-         README.md
-        {} tsconfig.app.json
-        TS tsconfig.json
-        {} tsconfig.spec.json
-
-APP is the name of parent directory on our desktop. 
-Remaining all things are build by Angular CLI. We have to focus on src folder in ngApp. 
-Our main application is inside src folder. src folder is the source code of project and it includes components, index.html file, stylesheets etc.
-Root Folder Content
-File/Folder	     Whats inside
----------------------------------
-e2e	            end to end testing
-node_modules	folder for node dependencies
-src	folder      for project source code
-.angular	    webpack and babel
-package.json	node dependencies configuration file
-angular.json	angular configuration file
-
-The application source files that this tutorial focuses on are in src/app:
-
-src/app
-├── app.component.css
-├── app.component.html
-├── app.component.spec.ts
-├── app.component.ts
-└── app.config.ts
-
-### 🎯Key files that the CLI generates automatically are the following:
-
-    app.component.ts: Also known as the class, contains the logic for the application's main page.
-    app.component.html: Contains the HTML for AppComponent. The contents of this file are also known as the template. The template determines the view or what you see in the browser.
-    app.component.css: Contains the styles for AppComponent. You use this file when you want to define styles that only apply to a specific component, as opposed to your application overall.
-
-A component in Angular is made up of three main parts—the template, styles, and the class. 
-For example, app.component.ts, app.component.html, and app.component.css together constitute the AppComponent. 
-This structure separates the logic, view, and styles so that the application is more maintainable and scalable. 
+### 3. Install Angular Material
+```bash
+ng add @angular/material
+```
 
 ---
 
-### 🎯AngularJS to Angular
-    AngularJS is basically 1.x Version which was launched in 2010 but 
-    Angular without JS represents Angular 2 and 2+ Version like Angular 2 ( beta), 
-    Angular 4 to 18. Angular which is released after AngularJS is not updated version of AngularJS but its Re-Written form of AngularJS. 
-    Angular is faster than AngularJS. AngularJS is only Web based Framework but Angular is Web, Desktop and Mobile Application based Framework and development platform.          
+## 📁 Angular Project Directory Structure
 
+```bash
+APP/
+├── ngApp/
+│   ├── .angular/            # Webpack & Babel configs
+│   ├── .vscode/
+│   ├── node_modules/        # Dependencies
+│   ├── src/                 # Application source code
+│   ├── angular.json         # Angular config
+│   ├── package.json         # Project metadata & dependencies
+│   ├── tsconfig.json        # TypeScript config
+│   └── README.md
+```
+
+### 🔹 Inside `src/app`:
+
+```bash
+src/app/
+├── app.component.css        # Styles
+├── app.component.html       # Template
+├── app.component.ts         # Component logic
+├── app.component.spec.ts    # Unit tests
+└── app.config.ts            # Configuration
+```
+
+---
+
+## 🔄 AngularJS vs Angular
+
+| Feature | AngularJS | Angular |
+|--------|------------|---------|
+| Version | 1.x | 2 and above |
+| Language | JavaScript | TypeScript |
+| Type | Web framework | Web, Desktop & Mobile |
+| Architecture | MVC | Component-based |
+| Performance | Slower | Faster |
+| Status | Deprecated | Actively maintained |
+
+
+---

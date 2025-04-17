@@ -1,9 +1,8 @@
 # AngularTutorial
 
-This project is an Angular 19 application demonstrating key Angular features, including components, Angular Material, and the Component Dev Kit (CDK). It integrates with a Spring Boot backend to showcase a full-stack application.
+This project is an Angular 19 application demonstrating key Angular features, including components, Angular Material, and the Component Dev Kit (CDK). 
 
 ## Prerequisites
-
 Before you begin, ensure you have the following installed:
 
 - **Node.js**: Version 22 or later
