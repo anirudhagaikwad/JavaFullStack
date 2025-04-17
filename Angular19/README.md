@@ -81,6 +81,7 @@ You can create custom pipes using the Angular CLI:
 ```bash
 ng generate pipe customPipeName
 
+```
 ---
 
 ## 🧭 7. Routing
