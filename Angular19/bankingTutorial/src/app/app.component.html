@@ -1,0 +1,4 @@
+<h1>{{title}}</h1>
+<app-balance [balance]="balance"></app-balance>
+<app-deposit (depositAmount)="updateBalance($event)"></app-deposit>
+<app-withdraw (withdrawAmount)="updateBalance($event)"></app-withdraw>

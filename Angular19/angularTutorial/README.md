@@ -49,7 +49,10 @@ Before you begin, ensure you have the following installed:
    ng generate component Signal
    ng generate component Minigame
    ```
-
+## If you cant find "src/app/app-routing.module.ts"
+```
+ng generate module app --routing --flat
+```
 ## Development Server
 
 Run the local development server:
