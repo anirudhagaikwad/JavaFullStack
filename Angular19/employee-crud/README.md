@@ -13,7 +13,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 #### Setup Commands
 ```bash
 # Create new Angular project
-ng new employee-crud --style=css --routing=true --standalone=false
+ng new employee-crud --style=css --routing=true --standalone=true
 cd employee-crud
 
 # Install Bootstrap 5.3.5
@@ -36,7 +36,7 @@ Add Bootstrap to `angular.json` under `projects.employee-crud.architect.build.op
 ```json
 "styles": [
   "node_modules/bootstrap/dist/css/bootstrap.min.css",
-  "src/styles.scss"
+  "src/styles.css"
 ],
 "scripts": [
   "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"

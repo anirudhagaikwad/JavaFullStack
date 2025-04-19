@@ -6,5 +6,4 @@ export interface Employee {
     phoneNumber?: string;
     hireDate: string;
     salary?: number;
-  }
-  
+}

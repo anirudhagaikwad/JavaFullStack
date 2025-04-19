@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-employee-detail',
+  selector: 'app-employee-details',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './employee-detail.component.html',
-  imports: [CommonModule],
-  
+  styleUrls: ['./employee-detail.component.css']
 })
-export class EmployeeDetailComponent implements OnInit {
+export class EmployeeDetailsComponent implements OnInit {
   employee?: Employee;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.employeeService.getById(+id).subscribe({
-        next: (data) => this.employee = data,
-        error: () => this.router.navigate(['/employees'])
+      this.employeeService.getEmployeeById(+id).subscribe((data) => {
+        this.employee = data;
       });
     }
   }

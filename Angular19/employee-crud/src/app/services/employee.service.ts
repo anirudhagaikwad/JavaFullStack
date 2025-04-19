@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/employee';
 
@@ -7,27 +7,31 @@ import { Employee } from '../models/employee';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private baseUrl = 'http://localhost:8080/employees';
+  private apiUrl = 'http://localhost:8080/employees';
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.baseUrl}/all`);
+  getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.apiUrl}/all`);
   }
 
-  getById(id: number): Observable<Employee> {
-    return this.http.get<Employee>(`${this.baseUrl}/${id}`);
+  getEmployeeById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`${this.apiUrl}/${id}`);
   }
 
-  add(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(`${this.baseUrl}/register`, employee);
+  getEmployeeByEmail(email: string): Observable<Employee> {
+    return this.http.get<Employee>(`${this.apiUrl}/email/${email}`);
   }
 
-  update(id: number, employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.baseUrl}/update/${id}`, employee);
+  registerEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(`${this.apiUrl}/register`, employee);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/delete/${id}`);
+  updateEmployee(id: number, employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(`${this.apiUrl}/update/${id}`, employee);
+  }
+
+  deleteEmployee(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
 }

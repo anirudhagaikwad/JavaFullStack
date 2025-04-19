@@ -1,19 +1,16 @@
 <div class="container mt-4" *ngIf="employee">
-    <h2>Employee Details</h2>
-    <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+    <h1 class="mb-4">Employee Details</h1>
+    <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{ employee.firstName }} {{ employee.lastName }}</h5>
+        <p class="card-text"><strong>ID:</strong> {{ employee.empId }}</p>
+        <p class="card-text"><strong>First Name:</strong> {{ employee.firstName }}</p>
+        <p class="card-text"><strong>Last Name:</strong> {{ employee.lastName }}</p>
         <p class="card-text"><strong>Email:</strong> {{ employee.email }}</p>
-        <p class="card-text"><strong>Phone:</strong> {{ employee.phoneNumber || 'N/A' }}</p>
+        <p class="card-text"><strong>Phone Number:</strong> {{ employee.phoneNumber || 'N/A' }}</p>
         <p class="card-text"><strong>Hire Date:</strong> {{ employee.hireDate }}</p>
-        <p class="card-text"><strong>Salary:</strong> ₹{{ employee.salary || '0' }}</p>
-        <a class="btn btn-secondary mt-3" routerLink="/employees">Back to List</a>
+        <p class="card-text"><strong>Salary:</strong> {{ employee.salary || 'N/A' }}</p>
+        <a routerLink="/edit/{{ employee.empId }}" class="btn btn-warning me-2">Edit</a>
+        <a routerLink="/" class="btn btn-secondary">Back</a>
       </div>
     </div>
   </div>
-  
-  <div class="container mt-4" *ngIf="!employee">
-    <div class="alert alert-warning">Employee not found!</div>
-    <a routerLink="/employees" class="btn btn-secondary">Back</a>
-  </div>
-  

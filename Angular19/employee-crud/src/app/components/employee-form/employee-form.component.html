@@ -1,32 +1,45 @@
 <div class="container mt-4">
-    <h2>{{ isEditMode ? 'Edit' : 'Add' }} Employee</h2>
-    <form (ngSubmit)="onSubmit()" #empForm="ngForm">
-      <div class="mb-3">
-        <label>First Name</label>
-        <input type="text" class="form-control" [(ngModel)]="employee.firstName" name="firstName" required title="Enter first name" placeholder="Enter first name">
+    <h1 class="mb-4">{{ isEditMode ? 'Edit Employee' : 'Add Employee' }}</h1>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="row g-3">
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input id="firstName" formControlName="firstName" type="text" class="form-control" [ngClass]="{'is-invalid': employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched}" />
+        <div *ngIf="employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched" class="invalid-feedback">
+          First Name is required
+        </div>
       </div>
-      <div class="mb-3">
-        <label>Last Name</label>
-        <input type="text" class="form-control" [(ngModel)]="employee.lastName" name="lastName" required title="Enter last name" placeholder="Enter last name">
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input id="lastName" formControlName="lastName" type="text" class="form-control" [ngClass]="{'is-invalid': employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched}" />
+        <div *ngIf="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched" class="invalid-feedback">
+          Last Name is required
+        </div>
       </div>
-      <div class="mb-3">
-        <label>Email</label>
-        <input type="email" class="form-control" [(ngModel)]="employee.email" name="email" required title="Enter email address" placeholder="Enter email address">
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" formControlName="email" type="email" class="form-control" [ngClass]="{'is-invalid': employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched}" />
+        <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched" class="invalid-feedback">
+          Valid email is required
+        </div>
       </div>
-      <div class="mb-3">
-        <label>Phone Number</label>
-        <input type="text" class="form-control" [(ngModel)]="employee.phoneNumber" name="phoneNumber" title="Enter phone number" placeholder="Enter phone number">
+      <div class="col-md-6">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input id="phoneNumber" formControlName="phoneNumber" type="text" class="form-control" />
       </div>
-      <div class="mb-3">
-        <label>Hire Date</label>
-        <input type="date" class="form-control" [(ngModel)]="employee.hireDate" name="hireDate" required title="Select hire date" placeholder="Select hire date">
+      <div class="col-md-6">
+        <label for="hireDate" class="form-label">Hire Date</label>
+        <input id="hireDate" formControlName="hireDate" type="date" class="form-control" [ngClass]="{'is-invalid': employeeForm.get('hireDate')?.invalid && employeeForm.get('hireDate')?.touched}" />
+        <div *ngIf="employeeForm.get('hireDate')?.invalid && employeeForm.get('hireDate')?.touched" class="invalid-feedback">
+          Hire Date is required
+        </div>
       </div>
-      <div class="mb-3">
-        <label>Salary</label>
-        <input type="number" class="form-control" [(ngModel)]="employee.salary" name="salary" placeholder="Enter salary">
+      <div class="col-md-6">
+        <label for="salary" class="form-label">Salary</label>
+        <input id="salary" formControlName="salary" type="number" class="form-control" />
       </div>
-      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Add' }}</button>
-      <a routerLink="/employees" class="btn btn-secondary ms-2">Cancel</a>
+      <div class="col-12">
+        <button type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary me-2">{{ isEditMode ? 'Update' : 'Create' }}</button>
+        <a routerLink="/" class="btn btn-secondary">Cancel</a>
+      </div>
     </form>
   </div>
-  
