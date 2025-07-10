@@ -27,7 +27,7 @@ public class MainApp {
             e.printStackTrace();
         } finally {
             // Ensure resources are closed
-            HibernateUtil.shutdown();
+        	HibernateUtil.shutdown();
             if (scanner != null) {
                 scanner.close();
             }

@@ -1,0 +1,14 @@
+dao\OrderDAO.class
+entity\Author.class
+dao\BookDAO.class
+app\Main.class
+dao\CategoryDAO.class
+dao\AuthorDAO.class
+dao\ReportDAO.class
+entity\Category.class
+entity\User.class
+entity\Order.class
+entity\Book.class
+app\JPAUtil.class
+dao\UserDAO.class
+entity\OrderItem.class

@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.example.model.Employee" table="empdetails">
+    <class name="model.Employee" table="empdetails">
         <id name="id" column="id">
             <generator class="sequence">
                 <param name="sequence_name">empdetails_id_seq</param>
@@ -11,6 +11,6 @@
         </id>
         <property name="name" column="name" type="string" length="100"/>
         <property name="email" column="email" type="string" length="100"/>
-        <many-to-one name="address" class="com.example.model.Address" column="address_id" not-null="true"/>
+        <many-to-one name="address" class="model.Address" column="address_id" not-null="true"/>
     </class>
 </hibernate-mapping>

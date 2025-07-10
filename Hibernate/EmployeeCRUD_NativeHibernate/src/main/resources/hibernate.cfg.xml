@@ -5,7 +5,7 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property> <!-- PostgreSQL JDBC driver -->
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/newemp</property> <!-- Database URL -->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/empdb</property> <!-- Database URL -->
         <property name="hibernate.connection.username">postgres</property> <!-- Database username -->
         <property name="hibernate.connection.password">123</property> <!-- Database password -->
 
