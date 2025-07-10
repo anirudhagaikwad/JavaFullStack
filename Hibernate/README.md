@@ -1,3 +1,3 @@
 # Hibernate 7.0.5 Final
 
-![Test_Image](https://raw.githubusercontent.com/anirudhagaikwad/JavaFullStack/main/Hibernate/Hibernate/POM_TypeScope.png)
+![Test_Image](https://github.com/anirudhagaikwad/JavaFullStack/blob/main/Hibernate/POM_TypeScope.png)
