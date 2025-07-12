@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>HibernateNativeAPIExample</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+   <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  <dependencyManagement>
+  <dependencies>
+     <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-platform</artifactId>
+            <version>7.0.5.Final</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-bom -->
+<dependency>
+    <groupId>jakarta.platform</groupId>
+    <artifactId>jakarta.jakartaee-bom</artifactId>
+    <version>11.0.0</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
+
+  </dependencies>
+  </dependencyManagement>
+  
+  <dependencies>
+      <dependency>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-core</artifactId>
+    </dependency>
+    
+    <dependency>
+        <groupId>jakarta.persistence</groupId>
+        <artifactId>jakarta.persistence-api</artifactId>
+    </dependency>
+     <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.7.7</version>
+</dependency>
+
+  </dependencies>
+</project>
