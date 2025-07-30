@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, select, button { padding: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h2>Temperature Converter</h2>
+  <input id="tempInput" type="number" placeholder="Enter temperature">
+  <select id="unit">
+    <option value="C">Celsius to Fahrenheit</option>
+    <option value="F">Fahrenheit to Celsius</option>
+  </select>
+  <button onclick="convert()">Convert</button>
+  <p id="result"></p>
+
+  <script>
+    function convert() {
+      const temp = parseFloat(document.getElementById('tempInput').value);
+      const unit = document.getElementById('unit').value;
+      let result = '';
+      if (!isNaN(temp)) {
+        if (unit === 'C') {
+          result = (temp * 9/5 + 32).toFixed(2) + ' °F';
+        } else {
+          result = ((temp - 32) * 5/9).toFixed(2) + ' °C';
+        }
+      } else {
+        result = 'Please enter a valid number';
+      }
+      document.getElementById('result').innerText = 'Result: ' + result;
+    }
+  </script>
+</body>
+</html>

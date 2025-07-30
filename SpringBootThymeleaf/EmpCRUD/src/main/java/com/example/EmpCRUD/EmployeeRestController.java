@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
+@CrossOrigin(origins = "http://localhost:5500") // Replace with your frontend URL
 public class EmployeeRestController {
 
     @Autowired
