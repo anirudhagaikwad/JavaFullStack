@@ -1,0 +1,33 @@
+<p>todo works!</p>
+<!-- src/app/todo/todo.component.html -->
+<div class="todo-container">
+  <h1>To-Do App</h1>
+  
+  <!-- Input to add new to-do -->
+  <div class="input-section">
+    <input 
+      [(ngModel)]="newTodo" 
+      (keyup.enter)="addTodo()"
+      placeholder="Enter a new task"
+      type="text"
+    />
+    <button (click)="addTodo()">Add Task</button>
+  </div>
+
+  <!-- Display total items -->
+  <p>Total Items: {{ totalItems() }}</p>
+
+  <!-- List of to-do items -->
+  <ul class="todo-list">
+    <li *ngFor="let todo of todos(); let i = index">
+      {{ todo }}
+      <button (click)="removeTodo(i)">Remove</button>
+    </li>
+  </ul>
+</div>
+<!-- 
+The input uses [(ngModel)] for two-way binding with the newTodo signal.
+Pressing Enter or clicking the “Add Task” button triggers addTodo().
+The *ngFor directive loops through the todos signal to display items.
+Each item has a “Remove” button that calls removeTodo(i) with the item’s index.
+The total number of items is displayed using totalItems(). -->
