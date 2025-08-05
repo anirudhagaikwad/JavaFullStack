@@ -184,6 +184,92 @@ Angular provides lifecycle methods in components:
 - **Updated RxJS Compatibility**
 
 ---
+## 16. **Angular Signals**, **CommonModule**, **FormsModule**, and **NgModule**
+
+### **1. Angular Signals**
+#### **What is it?**
+- **Signals** are a reactive primitive in Angular (introduced in Angular 17) that represent a value and notify consumers when that value changes. They are designed to make change detection more efficient by tracking state usage granularly.[](https://blog.angular-university.io/angular-signals/)
+- **Types**:
+  - **Writable Signals**: Created using `signal(value)`; can be updated with `.set()` or `.update()`. Example: `const count = signal(0); count.set(5);`[](https://angular.dev/guide/signals)
+  - **Computed Signals**: Read-only signals derived from other signals using `computed()`. Example: `const doubleCount = computed(() => count() * 2);`[](https://angular.dev/guide/signals)
+- Signals are consumed via data binding in templates or programmatically via their getter functions (e.g., `count()`).[](https://www.angulararchitects.io/blog/angular-signals/)
+- They are "glitch-free," preventing interim state issues during rapid updates.[](https://www.angulararchitects.io/blog/angular-signals/)
+
+#### **Purpose**
+- **Reactivity**: Signals allow Angular to track where state is used, enabling precise updates only to affected parts of the UI, improving performance over traditional change detection.[](https://blog.angular-university.io/angular-signals/)
+- **Optimization**: In OnPush components, signals trigger change detection efficiently when their values change.[](https://www.angulararchitects.io/blog/angular-signals/)
+- **Simplicity**: Provide an easy-to-use API for reactive programming, preparing Angular for signal-based components (expected around Angular 17.2).[](https://blog.angular-university.io/angular-signals/)
+- **Future-Proofing**: Signals are set to integrate deeply with Angular’s change detection system, reducing unnecessary checks.[](https://blog.angular-university.io/angular-signals/)
+
+---
+
+### **2. CommonModule**
+#### **What is it?**
+- **CommonModule** is an Angular module that provides essential directives for templating, such as `*ngIf`, `*ngFor`, and `ngStyle`. It is a subset of `BrowserModule`, which includes `CommonModule` and browser-specific features.[](https://blog.angular-university.io/angular2-ngmodule/)
+- It must be explicitly imported in feature modules (not the root module, which uses `BrowserModule`) to use these directives.[](https://blog.angular-university.io/angular2-ngmodule/)
+
+#### **Purpose**
+- **Template Functionality**: Enables core Angular directives for conditional rendering (`*ngIf`), iteration (`*ngFor`), and styling (`ngStyle`), making it essential for most feature modules.[](https://blog.angular-university.io/angular2-ngmodule/)
+- **Modularity**: Allows feature modules to access common directives without importing the heavier `BrowserModule`, which is reserved for the root module.[](https://medium.com/%40cyrilletuzi/understanding-angular-modules-ngmodule-and-their-scopes-81e4ed6f7407)
+- **Scoped Usage**: Ensures directives are only available in modules that import `CommonModule`, maintaining encapsulation.[](https://blog.angular-university.io/angular2-ngmodule/)
+
+---
+
+### **3. FormsModule**
+#### **What is it?**
+- **FormsModule** is an Angular module that provides directives and services for template-driven forms, such as `ngModel`, `ngForm`, and form validation directives.[](https://www.angulararchitects.io/blog/angular-signals/)
+- It is distinct from `ReactiveFormsModule`, which supports reactive forms.[](https://www.reddit.com/r/Angular2/comments/17puc4p/what_is_the_purpose_of_angular_modules/)
+- Example usage in a template:
+  ```html
+  <form #form="ngForm">
+    <input [(ngModel)]="from" name="from">
+  </form>
+  ```[](https://www.angulararchitects.io/blog/angular-signals/)
+
+#### **Purpose**
+- **Template-Driven Forms**: Simplifies form creation by allowing two-way data binding with `ngModel` and automatic form state management with `ngForm`.[](https://www.angulararchitects.io/blog/angular-signals/)
+- **Ease of Use**: Ideal for simple forms where reactive forms’ explicit control is unnecessary.[](https://angular.dev/overview)
+- **Future Integration**: The Angular team plans to adapt form handling to signals, enhancing reactivity (e.g., updating form state via signals).[](https://www.angulararchitects.io/blog/angular-signals/)
+
+---
+
+### **4. NgModule**
+#### **What is it?**
+- **NgModule** is a class decorated with `@NgModule` that organizes Angular applications into cohesive blocks of functionality. It defines a compilation context and dependency injection scope.[](https://angular.dev/guide/ngmodules/overview)
+- **Key Metadata**:
+  - **declarations**: Lists components, directives, and pipes belonging to the module (non-standalone).[](https://angular.dev/guide/ngmodules/overview)
+  - **imports**: Includes other modules or standalone components/directives/pipes needed by the module.[](https://angular.dev/guide/ngmodules/overview)
+  - **exports**: Makes declared or imported components/directives/pipes available to other modules.[](https://angular.dev/guide/ngmodules/overview)
+  - **providers**: Defines services (globally scoped unless overridden).[](https://medium.com/%40cyrilletuzi/understanding-angular-modules-ngmodule-and-their-scopes-81e4ed6f7407)
+  - **bootstrap**: Specifies the root component for the root module.[](https://stackoverflow.com/questions/40393701/what-is-ngmodule-actually-in-angular)
+- Example:
+  ```typescript
+  import { NgModule } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { CustomComponent } from './custom.component';
+  @NgModule({
+    declarations: [CustomComponent],
+    imports: [CommonModule],
+    exports: [CustomComponent]
+  })
+  export class CustomModule { }
+  ```[](https://www.tutorialspoint.com/angular/angular-introduction-to-modules.htm)
+
+#### **Purpose**
+- **Organization**: Groups related components, directives, pipes, and services into logical units (e.g., `WishlistModule`, `CartModule`).[](https://stackoverflow.com/questions/40393701/what-is-ngmodule-actually-in-angular)
+- **Modularity**: Enables lazy loading to split applications into smaller, load-on-demand chunks, improving performance.[](https://blog.angular-university.io/angular2-ngmodule/)
+- **Dependency Injection**: Configures services and providers for the module’s scope.[](https://angular.dev/guide/ngmodules/overview)
+- **Compilation Context**: Defines how templates are compiled, supporting ahead-of-time (AOT) compilation for faster rendering.[](https://blog.angular-university.io/angular2-ngmodule/)
+- **Transition to Standalone**: While NgModules are still supported, Angular recommends standalone components for new code to simplify dependency management.[](https://angular.dev/guide/ngmodules/overview)[](https://www.reddit.com/r/Angular2/comments/17puc4p/what_is_the_purpose_of_angular_modules/)
+
+---
+
+### **Key Notes**
+- **Signals vs. NgModule**: Signals are a new reactive primitive focused on state management and change detection, while NgModules focus on organizing code and dependencies. Signals will likely power future Angular features, reducing reliance on NgModules.[](https://blog.angular-university.io/angular-signals/)
+- **CommonModule vs. FormsModule**: `CommonModule` provides core templating directives, while `FormsModule` adds form-specific functionality. Both are often imported together in feature modules.[](https://blog.angular-university.io/angular2-ngmodule/)[](https://www.angulararchitects.io/blog/angular-signals/)
+- **Standalone Components**: Angular is moving toward standalone components, which import dependencies directly, reducing the need for NgModules. However, NgModules remain relevant for legacy code and certain advanced scenarios like lazy loading.[](https://www.reddit.com/r/Angular2/comments/17puc4p/what_is_the_purpose_of_angular_modules/)
+
+---
 
 ## ⚙️ Prerequisites
 - **Node.js**: v22.14.0
